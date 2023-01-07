@@ -1,0 +1,59 @@
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="../../assets/img/fashion/account1.jpg" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+     <div class="container">
+      <div class="aa-catg-head-banner-content">
+        <h2>Login | Register Page</h2>
+        <ol class="breadcrumb">
+          <li><a href="home">Home</a></li>                   
+          <li class="active">Login | Register</li>
+        </ol>
+      </div>
+     </div>
+   </div>
+  </section>
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="aa-myaccount">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+        <div class="aa-myaccount-area">         
+            <div class="row">
+              <div class="col-md-6">
+                <div class="aa-myaccount-login">
+                <h4>Login</h4>
+                 <form action="" class="aa-login-form">
+                  <label name = "username" for="">Username or Email address<span>*</span></label>
+                   <input name = "username" [(ngModel)] = "L_username" type="text" placeholder="Username or email">
+                   <label name="password" for="">Password<span>*</span></label>
+                    <input name="password" [(ngModel)] = "L_password" type="password" placeholder="Password">
+                    <button type="submit" class="aa-browse-btn"(click) = "login()" >Login</button>
+                    <label class="rememberme" for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="aa-myaccount-register">                 
+                 <h4>Register</h4>
+                 <form action="" class="aa-login-form">
+                
+                    <label name = "username" for="">Username or Email address<span>*</span></label>
+                    <input  name = "username" [(ngModel)] = "R_username" type="text" placeholder="Username or email">
+                    <label name = "password" for="">Password<span>*</span></label>
+                    <input name = "password" [(ngModel)] = "R_password" type="password" placeholder="Password">
+                    <button type="submit" class="aa-browse-btn" (click) = "register()">Register</button>                    
+                  </form>
+                </div>
+              </div>
+            </div>          
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+

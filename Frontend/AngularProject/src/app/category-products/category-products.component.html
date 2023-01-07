@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <h3>.</h3>
+  </div>
+</div>
+<section id="aa-product">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="row">
+            <div class="aa-product-area">
+              <div class="aa-product-inner">
+                <ul class="aa-product-catg">
+                  <!-- start single product item -->
+                  <li *ngFor="let product of filteredData; let i = index">
+                    <figure>
+                      <a class="aa-product-img">
+                        <img
+                          src="http://localhost:8000/storage/{{
+                            product.product_image
+                          }}"
+                          alt="{{ product.description }}"
+                          width="250px"
+                          height="300px"
+                      /></a>
+                      <a
+                        class="aa-add-card-btn"
+                        (click)="addProductToCart(product.product_id)"
+                      >
+                        <span class="fa fa-shopping-cart"></span>Add To Cart</a
+                      >
+                      <figcaption>
+                        <h4 class="aa-product-title">
+                          <a>{{ product.product_name }}</a>
+                        </h4>
+                        <span class="aa-product-price"
+                          >Rs.{{ product.price }}</span
+                        ><span class="aa-product-price">
+                          <del>Rs.{{ product.price + 1200 }}</del></span
+                        >
+                      </figcaption>
+                    </figure>
+                    <div class="aa-product-hvr-content">
+                      <a
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Add to Wishlist"
+                        ><span class="fa fa-heart-o"></span
+                      ></a>
+                      <a
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Compare"
+                        ><span class="fa fa-exchange"></span
+                      ></a>
+                      <a
+                        data-toggle2="tooltip"
+                        data-placement="top"
+                        title="Quick View"
+                        data-toggle="modal"
+                        data-target="#quick-view-modal"
+                        ><span class="fa fa-search"></span
+                      ></a>
+                    </div>
+                    <!-- product badge -->
+                    <span class="aa-badge aa-sale">SALE!!</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

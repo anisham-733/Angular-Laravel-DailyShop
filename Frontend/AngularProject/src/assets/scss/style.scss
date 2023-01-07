@@ -1,0 +1,88 @@
+/*
+	Template Name: Daily Shop
+	Author : MarkUps.io
+	Author URI: http://www.markups.io/
+	Version: 1.0
+
+*/
+
+
+/* BASE - Base tyles, Variables, Mixins, etc. */
+
+
+@import 'base/_variables.scss';
+@import 'base/_mixins.scss';
+@import 'base/_base.scss';
+
+/* MODULES - Individual site components */
+
+@import 'modules/_typography.scss';
+@import 'modules/_buttons.scss';
+
+
+
+/* LAYOUTS - Page layout styles */
+
+
+
+/*==================
+ HEADER SECTION
+====================*/
+
+@import 'layouts/_header.scss';
+
+/*==================
+ NAVBAR SECTION
+====================*/
+
+@import 'layouts/_nav.scss';
+
+/* ALL SECTION */
+
+@import 'modules/_sections.scss';
+
+/*==================
+ FOOTER SECTION
+====================*/
+
+@import 'layouts/_footer.scss';
+
+/*==================
+ RESPONSIVE DESIGN
+====================*/
+
+@import 'modules/_responsive.scss';
+
+@import "~swiper/css";
+@import "~swiper/css/pagination";
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

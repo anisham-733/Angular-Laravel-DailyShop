@@ -1,0 +1,258 @@
+ <!-- wpf loader Two -->
+ <div id="wpf-loader-two">          
+  <div class="wpf-loader-two-inner">
+    <span>Loading</span>
+  </div>
+</div> 
+<!-- / wpf loader Two -->        
+<!-- SCROLL TOP BUTTON -->
+  <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+<!-- END SCROLL TOP BUTTON -->
+
+<!-- Start header section -->
+<header id="aa-header">
+    <!-- start header top  -->
+    <div class="aa-header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-header-top-area">
+              <!-- start header top left -->
+              <div class="aa-header-top-left">
+                <!-- start language -->
+                <div class="aa-language">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <img src="../../assets/img/flag/english.jpg" alt="english flag">ENGLISH
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li><a href="#"><img src="../../assets/img/flag/french.jpg" alt="">FRENCH</a></li>
+                      <li><a href="#"><img src="../../assets/img/flag/english.jpg" alt="">ENGLISH</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- / language -->
+
+                <!-- start currency -->
+                <div class="aa-currency">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <i class="fa fa-usd"></i>USD
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li><a href="#"><i class="fa fa-euro"></i>EURO</a></li>
+                      <li><a href="#"><i class="fa fa-jpy"></i>YEN</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- / currency -->
+                <!-- start cellphone -->
+                <div class="cellphone hidden-xs">
+                  <p><span class="fa fa-phone"></span>00-62-658-658</p>
+                </div>
+                <!-- / cellphone -->
+              </div>
+              <!-- / header top left -->
+              <div class="aa-header-top-right">
+                <ul class="aa-head-top-nav-right">
+                  <li><a routerLink = 'account'>Login</a></li>
+                  <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
+                  <li class="hidden-xs"><a routerLink='{{cartRoute}}'>My Cart</a></li>
+                  <li class="hidden-xs"><a routerLink = '/checkout'>Checkout</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">**</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / header top  -->
+
+    <!-- start header bottom  -->
+    <div class="aa-header-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-header-bottom-area">
+              <!-- logo  -->
+              <div class="aa-logo">
+                <!-- Text based logo -->
+                <a href="index.html">
+                  <span class="fa fa-shopping-cart"></span>
+                  <p>daily<strong>Shop</strong> <span>Your Shopping Partner</span></p>
+                </a>
+                
+              </div>
+              <!-- / logo  -->
+               <!-- cart box -->
+              <div class="aa-cartbox" (click) = "fetchCart()">
+                <a class="aa-cart-link" >
+                  <span class="fa fa-shopping-basket"></span>
+                  <span class="aa-cart-title">SHOPPING CART</span>
+                  <span class="aa-cart-notify">{{count}}</span>
+                </a>
+                <div class="aa-cartbox-summary">
+                  <ul>
+                    <li *ngFor = "let item of cart">
+                      <a class="aa-cartbox-img"><img src="http://localhost:8000/images/{{item.product_image}}" 
+                        alt="img"></a>
+                      <div class="aa-cartbox-info">
+                        <h4><a>{{item.product_name}}</a></h4>
+                        <p>Price: {{item.price}}</p>
+                        <p>Total: {{item.quantity}} x {{item.price}}</p>
+                      </div>
+                      <a class="aa-remove-product" (click) = "deleteCartPro(item.product_id)" ><span class="fa fa-times"></span></a>
+                    </li>
+                    <li>
+                        <span class="aa-cartbox-total-title">
+                          Total
+                        </span>
+                        <span class="aa-cartbox-total-price">
+                          Rs. {{this.total}}
+                        </span>
+                      </li>
+                    </ul>
+                    <a class="aa-cartbox-checkout aa-primary-btn" (click) = "goToCheckout()">Checkout</a>
+                  </div>
+                </div>
+                <!-- / cart box -->
+                <!-- search box -->
+                <div class="aa-search-box">
+                  <input type="text" [(ngModel)] = "Value"
+                             placeholder="Search for a product name"
+                             aria-label="Search"
+                             name = "value"
+                             matInput
+                             (input) = "searchValue()"    
+                             [matAutocomplete]="auto">
+
+                      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                      
+                      <div *ngIf = "searchCount; then thenBlock else elseBlock"></div>
+                      <ng-template #thenBlock>
+                      
+                          <!-- <mat-select> -->
+                        <mat-option *ngFor = "let item of searchResult" value="{{item.product_name}} for {{item.category_name}}">{{item.product_name}} for {{item.category_name}}                     
+                        </mat-option>
+                        <!-- </mat-select> -->
+                      </ng-template>
+                      
+                      <ng-template #elseBlock>
+                       <mat-option>No product found</mat-option>
+                      </ng-template> 
+                      </mat-autocomplete>
+                                        
+                      <button type="submit" (click) = "selectedValue()" ><span class="fa fa-search"></span></button>
+                             
+                </div>
+                       
+              <!-- / search box -->             
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / header bottom  -->
+</header>
+<!-- MENU -->
+<section id="menu">
+    <div class="container">
+      <div class="menu-area">
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>          
+          </div>
+          <div class="navbar-collapse collapse">
+            <!-- Left nav -->
+            <ul class="nav navbar-nav">
+              <li><a routerLink = 'home'>Home</a></li>
+              <li><a routerLink="products/Men">Men <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                  <li *ngFor = "let item of items"><a href="#">{{item.general}}</a></li>
+                  <li><a href="#">And more.. <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Sleep Wear</a></li>
+                      <li><a href="#">Sandals</a></li>
+                      <li><a href="#">Loafers</a></li>                                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a routerLink = "products/Women">Women <span class="caret"></span></a>
+                <ul class="dropdown-menu">  
+                  <li *ngFor = "let item of womenItems"><a href="#">{{item.wIt}}</a></li>                                                                
+                 
+                  <li><a href="#">And more.. <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Sleep Wear</a></li>
+                      <li><a href="#">Sandals</a></li>
+                      <li><a href="#">Loafers</a></li>
+                      <li><a href="#">And more.. <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li *ngFor = "let it of itemss"><a href="#">{{it.name}}</a></li>
+                          <li class="disabled"><a class="disabled" href="#">Disabled item</a></li>                       
+                                               
+                        </ul>
+                      </li>                   
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a routerLink = "products/Kids">Kids <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                  <li *ngFor = "let item of kids"><a href="#">{{item.name}}</a></li>
+        
+                  <li><a href="#">And more.. <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Sleep Wear</a></li>
+                      <li><a href="#">Sandals</a></li>
+                      <li><a href="#">Loafers</a></li>                                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a routerLink = "products/Sports">Sports</a></li>
+             <li><a routerLink="products/Electronics">Electronics <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                  <li><a>Camera</a></li>
+                  <li><a>Mobile</a></li>
+                  <li><a>Tablet</a></li>
+                  <li><a>Laptop</a></li>                                                
+                  <li><a>Accesories</a></li>                
+                </ul>
+              </li>
+              <li><a routerLink = "products/Digital">Digital</a></li>            
+              <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                  <li><a href="blog-archive.html">Blog Style 1</a></li>
+                  <li><a href="blog-archive-2.html">Blog Style 2</a></li>
+                  <li><a href="blog-single.html">Blog Single</a></li>                
+                </ul>
+              </li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="#">Pages <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                  <li><a href="product.html">Shop Page</a></li>
+                  <li><a routerLink='singleProd' >Shop Single</a></li>            
+                  <li><a href="404.html">404 Page</a></li>                
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>       
+    </div>
+  </section>
+  <!-- / menu -->
+
+                    
