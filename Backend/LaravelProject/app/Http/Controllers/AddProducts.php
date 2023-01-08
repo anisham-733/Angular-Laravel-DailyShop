@@ -29,6 +29,7 @@ class AddProducts extends Controller
         {
             // **********IMAGE UPLOAD ****************
             $result = $this->upload();
+            
             $filename = $result[0];
             $folder=$result[1];
             $tempname = $result[2];
